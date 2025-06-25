@@ -10,7 +10,7 @@ import jwt from "jsonwebtoken";
 
 const app = express();
 
-const mongoUrl = 'mongodb+srv://root:1234@cbc-db.8yhpgog.mongodb.net/?retryWrites=true&w=majority&appName=cbc-db';
+const mongoUrl = '########';
 mongoose.connect(mongoUrl,{});
 const connection = mongoose.connection;
 connection.once('open', () => {
