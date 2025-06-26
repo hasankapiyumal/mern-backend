@@ -5,12 +5,14 @@ import Student from './models/student.js';
 import StudentRouter from './routes/studentRouter.js';
 import productRouter from './routes/productRouter.js';
 import userRouter from './routes/userRouter.js';
-import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken"; 
+import dotenv from "dotenv";
+dotenv.config();
 
 
 const app = express();
 
-const mongoUrl = 'mongodb+srv://root:1234@cbc-db.8yhpgog.mongodb.net/?retryWrites=true&w=majority&appName=cbc-db';
+const mongoUrl =process.env.MONOGO_DB_URI;
 mongoose.connect(mongoUrl,{});
 const connection = mongoose.connection;
 connection.once('open', () => {
