@@ -12,7 +12,11 @@ dotenv.config();
 
 const app = express();
 
+<<<<<<< HEAD
 const mongoUrl =process.env.MONOGO_DB_URI;
+=======
+const mongoUrl = '########';
+>>>>>>> a918d724cf2e3da14791b7ffb392d1dbc0afe73b
 mongoose.connect(mongoUrl,{});
 const connection = mongoose.connection;
 connection.once('open', () => {
