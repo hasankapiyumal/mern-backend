@@ -2,7 +2,7 @@ import express  from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import Student from './models/student.js';
-import StudentRouter from './routes/studentRouter.js'; 
+import StudentRouter from './routes/studentRouter.js';  
 import userRouter from './routes/userRouter.js';
 import jwt from "jsonwebtoken"; 
 import dotenv from "dotenv";

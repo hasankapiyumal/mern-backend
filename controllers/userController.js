@@ -3,6 +3,20 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 export function createUser(req,res){
     const userData =req.body;
+    if(userData.type=="admin"){
+        if(req.user==null){
+            res.json({
+                "message":"please login as admin to create admin accounts"
+            })
+            return;
+        }
+    }
+    if(req.user.type!="admin"){
+        res.json({
+            "message":"only admin can create admin accounts"
+        })
+        return;
+    }
     userData.password =bcrypt.hashSync(userData.password,10);
     const user =new User(userData);
 
@@ -49,4 +63,26 @@ export function loginUser(req,res){
         }
 
     })
+}
+
+export function isAdmin(req){
+    if(req.user==null){
+        return false
+    }
+
+    if(req.user.type !="admin"){
+        return false
+    }
+    return true
+}
+
+export function isCustomer(req){
+    if(req.user==null){
+        return false
+    }
+
+    if(req.user.type !="customer"){
+        return false
+    }
+    return true
 }
