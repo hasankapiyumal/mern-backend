@@ -55,7 +55,16 @@ export function loginUser(req,res){
                 },process.env.SECRET_KEY);
     
                 res.json({
-                    "message":"user logged in"
+                    "message":"user logged in",
+                    token:token,
+                    user:{
+                        email:user.email,
+                        firstName:user.firstName,
+                        lastName:user.lastName,
+                        type:user.type,
+                        isBlocked:user.isBlocked,
+                        profilePicture:user.profilePicture
+                    }
                 })
             }else{
                 res.json({
