@@ -54,4 +54,26 @@ export function deleteProduct(req, res) {
     });
     return;
   }
+
 }
+  export function updateProduct(req,res){
+    if(!isAdmin(req)){
+        res.json({
+            message:"only admin can update products"
+        });
+        return;
+    }
+    const productId=req.params.productId;
+    Product.updateOne({productId:productId},req.body)
+      .then(()=>{
+        res.json({
+          message:"product updated"
+        });
+      })
+      .catch((error)=>{
+        res.json({
+          message:error
+        });
+      });
+  }
+
