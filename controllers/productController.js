@@ -77,3 +77,20 @@ export function deleteProduct(req, res) {
       });
   }
 
+  export function getProductById(req,res){
+    const proudctId =req.params.productId;
+  if(proudctId==null){
+    res.json({
+      message:"product id is required"
+    });
+    return;
+  }
+
+  Product.findById({proudctId:proudctId}).then((product)=>{
+    res.json(product);
+  }).catch((error)=>{
+    res.status(500).json({
+      message:error
+    });
+  })
+  }
